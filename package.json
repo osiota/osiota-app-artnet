@@ -1,0 +1,16 @@
+{
+  "name": "er-app-artnet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "artnet": "^1.4.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.ibr.cs.tu-bs.de:eneff-campus-2020/er-app-artnet.git"
+  },
+  "author": "",
+  "license": ""
+}
