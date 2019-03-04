@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "artnet": "^1.4.0"
   },
   "devDependencies": {},
   "repository": {

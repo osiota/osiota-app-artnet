@@ -4,6 +4,7 @@
  *
  * that.send(universe, 512, callback);
  */
+var ArtNet = require('./helper_artnet');
 
 exports.init = function(node, app_config, main, host_info) {
 	if (typeof app_config.options !== "object") {
@@ -17,12 +18,7 @@ exports.init = function(node, app_config, main, host_info) {
 		};
 	}
 
-	var universe = 0;
-	if (typeof app_config.universe === "number") {
-		universe = app_config.universe;
-	}
-
-	var artnet = require('artnet')(app_config.options);
+	var artnet = new ArtNet(app_config.options);
 
 	node.rpc_dmx = function(reply, channel, value) {
 		if (value === null)
@@ -30,7 +26,7 @@ exports.init = function(node, app_config, main, host_info) {
 		if (typeof value !== "number")
 			value *= 1;
 
-		artnet.set(universe, channel, value);
+		artnet.set(channel, value);
 
 		reply(null, "ok");
 	};
@@ -40,7 +36,7 @@ exports.init = function(node, app_config, main, host_info) {
 		if (typeof value !== "number")
 			value *= 1;
 
-		artnet.set(universe, channel, value);
+		artnet.set(channel, value);
 	};
 
 	node.announce({
@@ -74,7 +70,7 @@ exports.init = function(node, app_config, main, host_info) {
 			if (typeof value !== "number")
 				value *= 1;
 
-			artnet.set(universe, channel, value);
+			artnet.set(channel, value);
 			this.publish(undefined, value);
 
 			reply(null, "ok");
