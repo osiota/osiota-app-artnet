@@ -108,7 +108,7 @@ ArtNet.prototype.update = function() {
 	});
 };
 ArtNet.prototype.set = function(addr, value) {
-	this.data.writeUInt8(value, 18 + addr);
+	this.data.writeUInt8(value, 18 + addr - 1);
 	this.update();
 };
 ArtNet.prototype.close = function() {
