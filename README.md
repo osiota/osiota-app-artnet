@@ -25,16 +25,52 @@ This application allows controlling lights over the Art-Net protocol.
 |refresh\_rate|Refresh Rate (in ms)<br/><br/>Default: `4000`|number|
 |universe|ArtNet universe<br/>|number|
 |iface|Interface to bind the Art-Net socket to<br/>|string|
+|[map](#map)|DMX channels<br/>|object\[\]|
 
 **Additional Properties:** `false`<br/>
 **Example**
 
 ```json
 {
-    "host": "255.255.255.255",
+    "host": "192.0.2.42",
     "port": 6454,
-    "refresh_rate": 4000
+    "refresh_rate": 4000,
+    "universe": 0,
+    "iface": "eth0",
+    "map": [
+        {
+            "channel": 1,
+            "node": "/my-artnet-channel",
+            "default_value": 63
+        }
+    ]
 }
+```
+
+<a name="map"></a>
+### map\[\]: DMX channels
+
+**Items: DMX channel**
+
+**Item Properties**
+
+|Name|Description|Type|
+|----|-----------|----|
+|channel|Channel<br/><br/>Minimum: `1`<br/>Maximum: `512`|number|
+|node|Node Name<br/>|string|
+|default\_value|Default Value<br/><br/>Minimum: `0`<br/>Maximum: `255`|number|
+
+**Item Additional Properties:** `false`<br/>
+**Example**
+
+```json
+[
+    {
+        "channel": 1,
+        "node": "/my-artnet-channel",
+        "default_value": 63
+    }
+]
 ```
 
 
