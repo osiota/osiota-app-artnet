@@ -6,7 +6,8 @@
 		"host": {
 			"title": "Host",
 			"type": "string",
-			"default": "255.255.255.255"
+			"default": "255.255.255.255",
+			"examples": [ "192.0.2.42" ]
 		},
 		"port": {
 			"title": "Port",
@@ -20,12 +21,44 @@
 		},
 		"universe": {
 			"type": "number",
-			"title": "ArtNet universe"
+			"title": "ArtNet universe",
+			"examples": [ 0 ]
 		},
 		"iface": {
 			"type": "string",
 			"title": "Interface",
-			"description": "Interface to bind the Art-Net socket to"
+			"description": "Interface to bind the Art-Net socket to",
+			"examples": [ "eth0" ]
+		},
+		"map": {
+			"type": "array",
+			"title": "DMX channels",
+			"items": {
+				"type": "object",
+				"title": "DMX channel",
+				"properties": {
+					"channel": {
+						"title": "Channel",
+						"type": "number",
+						"minimum": 1,
+						"maximum": 512,
+						"examples": [ 1 ]
+					},
+					"node": {
+						"title": "Node Name",
+						"type": "string",
+						"examples": [ "/my-artnet-channel" ]
+					},
+					"default_value": {
+						"title": "Default Value",
+						"type": "number",
+						"minimum": 0,
+						"maximum": 255,
+						"examples": [ 63 ]
+					}
+				},
+				"additionalProperties": false
+			}
 		}
 	},
 	"additionalProperties": false
