@@ -1,16 +1,20 @@
 {
 	"type": "object",
-	"title": "ArtNet binding",
+	"title": "osiota application artnet",
+	"description": "This application allows controlling lights over the Art-Net protocol.",
 	"properties": {
 		"host": {
+			"title": "Host",
 			"type": "string",
 			"default": "255.255.255.255"
 		},
 		"port": {
+			"title": "Port",
 			"type": "number",
 			"default": 6454
 		},
 		"refresh_rate": {
+			"title": "Refresh Rate (in ms)",
 			"type": "number",
 			"default": 4000
 		},
@@ -20,7 +24,8 @@
 		},
 		"iface": {
 			"type": "string",
-			"title": "Interface to bind Artnet socket to."
+			"title": "Interface",
+			"description": "Interface to bind the Art-Net socket to"
 		}
 	},
 	"additionalProperties": false

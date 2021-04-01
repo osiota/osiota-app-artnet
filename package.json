@@ -1,15 +1,19 @@
 {
-  "name": "er-app-artnet",
+  "name": "osiota-app-artnet",
   "version": "1.0.0",
-  "description": "",
+  "description": "This application allows controlling lights over the Art-Net protocol",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "osiota-dev": "^1.x"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git@gitlab.ibr.cs.tu-bs.de:eneff-campus-2020/er-app-artnet.git"
+    "url": "https://github.com/osiota/osiota-app-artnet.git"
   },
-  "author": "",
-  "license": ""
+  "author": "Simon Walz and others",
+  "license": "MIT",
+  "scripts": {
+    "doc": "osiota-dev-doc-jsonschema --schema schema.json --app $npm_package_name"
+  }
 }
