@@ -1,6 +1,6 @@
 {
   "name": "osiota-app-artnet",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This application allows controlling lights over the Art-Net protocol",
   "main": "index.js",
   "dependencies": {},
