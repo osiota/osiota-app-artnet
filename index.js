@@ -1,24 +1,7 @@
-/*
- * TODO:
- * modul artnet aendern:
- *
- * that.send(universe, 512, callback);
- */
 var ArtNet = require('./helper_artnet');
 
 exports.init = function(node, app_config, main, host_info) {
-	if (typeof app_config.options !== "object") {
-		app_config.options = {
-			"host": "127.0.0.1",
-			"sendAll": true
-		};
-	}
-	if (typeof app_config.object !== "object") {
-		app_config.object = {
-		};
-	}
-
-	var artnet = new ArtNet(app_config.options);
+	var artnet = new ArtNet(app_config);
 
 	node.rpc_dmx = function(reply, channel, value) {
 		if (value === null)
@@ -43,46 +26,27 @@ exports.init = function(node, app_config, main, host_info) {
 		"type": "artnet.rpc"
 	});
 
-	// set loop (see usbdmx)
-	for (var n in app_config.nodes) {
-		var channel = app_config.nodes[n];
-		var default_value = null;
-		var nn = node.node(n);
-
-		if (Array.isArray(channel)) {
-			if (channel.length >= 2) {
-				default_value = channel[1];
-			}
-			channel = channel[0];
-		}
-
-		if (typeof channel === "object" &&
-				typeof channel.channel === "number" &&
-				typeof channel.value === "number") {
-			default_value = channel.value;   
-			channel = channel.channel;              
-		}
-
-		(function(nn, channel, default_value) {
-		nn.rpc_set = function(reply, value) {
+	var map = node.map(app_config, null, true, null,
+			function(n, metadata, c) {
+		let channel = c.channel;
+		let default_value = c.default_value;
+		n.rpc_set = function(reply, value, time) {
 			if (value === null)
 				value = default_value;
 			if (typeof value !== "number")
 				value *= 1;
 
 			artnet.set(channel, value);
-			this.publish(undefined, value);
+			this.publish(undefined, value, time);
 
 			reply(null, "ok");
 		};
-		})(nn, channel, default_value);
-
+		n.announce(metadata);
 		if (default_value !== null) {
 			nn.rpc_set(function() {}, default_value);
 		}
-	}
-	// end set loop
+	});
 
-	return [node, artnet];
+	return [map, node, artnet];
 };
 

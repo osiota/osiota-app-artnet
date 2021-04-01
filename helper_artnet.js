@@ -23,7 +23,8 @@ var ArtNet = function(config) {
 	}
 
 	this.socket = dgram.createSocket("udp4");
-	if (typeof config.iface === "string") {
+	if (typeof config.iface === "string" &&
+			config.iface !== "") {
 		socket.bind(port, config.iface);
 	}
 

@@ -1,45 +1,26 @@
 {
 	"type": "object",
-	"title": "Settings",
+	"title": "ArtNet binding",
 	"properties": {
-		"options": {
-			"type": "object",
-			"title": "ArtNet options",
-			"properties": {
-				"host": {
-					"type": "string"
-				},
-				"sendAll": {
-					"type": "boolean",
-					"format": "checkbox"
-				}
-			}
+		"host": {
+			"type": "string",
+			"default": "255.255.255.255"
+		},
+		"port": {
+			"type": "number",
+			"default": 6454
+		},
+		"refresh_rate": {
+			"type": "number",
+			"default": 4000
 		},
 		"universe": {
 			"type": "number",
 			"title": "ArtNet universe"
 		},
-		"nodes": {
-			"type": "array",
-			"format": "table",
-			"title": "ArtNet Channels",
-			"items": {
-				"type": "object",
-				"title": "Mapping",
-				"properties": {
-					"node": {
-						"type": "string"
-					},
-					"address": {
-						"type": "number",
-						"minimum": 0
-					},
-					"default": {
-						"type": "number"
-					}
-				},
-				"required": ["node", "address"]
-			}
+		"iface": {
+			"type": "string",
+			"title": "Interface to bind Artnet socket to."
 		}
 	},
 	"additionalProperties": false
