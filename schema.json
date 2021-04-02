@@ -15,7 +15,8 @@
 			"default": 6454
 		},
 		"refresh_rate": {
-			"title": "Refresh Rate (in ms)",
+			"title": "Refresh Rate",
+			"description": "in ms",
 			"type": "number",
 			"default": 4000
 		},
