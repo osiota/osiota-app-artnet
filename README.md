@@ -20,12 +20,12 @@ This application allows controlling lights over the Art-Net protocol.
 
 |Name|Description|Type|
 |----|-----------|----|
-|host|Host<br/><br/>Default: `"255.255.255.255"`|string|
-|port|Port<br/><br/>Default: `6454`|number|
-|refresh\_rate|Refresh Rate (in ms)<br/><br/>Default: `4000`|number|
-|universe|ArtNet universe<br/>|number|
-|iface|Interface to bind the Art-Net socket to<br/>|string|
-|[map](#map)|DMX channels<br/>|object\[\]|
+|`host` (Host)|Default: `"255.255.255.255"`<br/>|string|
+|`port` (Port)|Default: `6454`<br/>|number|
+|`refresh_rate` (Refresh Rate (in ms))|Default: `4000`<br/>|number|
+|`universe` (ArtNet universe)||number|
+|`iface` (Interface)|Interface to bind the Art-Net socket to<br/>|string|
+|[`map`](#map) (DMX channels)||object\[\]|
 
 **Additional Properties:** `false`<br/>
 **Example**
@@ -56,9 +56,9 @@ This application allows controlling lights over the Art-Net protocol.
 
 |Name|Description|Type|
 |----|-----------|----|
-|channel|Channel<br/><br/>Minimum: `1`<br/>Maximum: `512`|number|
-|node|Node Name<br/>|string|
-|default\_value|Default Value<br/><br/>Minimum: `0`<br/>Maximum: `255`|number|
+|`channel` (Channel)|Minimum: `1`<br/>Maximum: `512`<br/>|number|
+|`node` (Node Name)||string|
+|`default_value` (Default Value)|Minimum: `0`<br/>Maximum: `255`<br/>|number|
 
 **Item Additional Properties:** `false`<br/>
 **Example**
