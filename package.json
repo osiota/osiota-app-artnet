@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "osiota-dev": "^1.2.1"
+    "osiota-dev": "^1.2.2"
   },
   "repository": {
     "type": "git",
