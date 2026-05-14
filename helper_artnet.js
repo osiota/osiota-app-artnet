@@ -23,9 +23,17 @@ var ArtNet = function(config) {
 	}
 
 	this.socket = dgram.createSocket("udp4");
+	var _this = this;
 	if (typeof config.iface === "string" &&
 			config.iface !== "") {
-		socket.bind(port, config.iface);
+		this.socket.bind(this.port, config.iface,  function() {
+		    _this.socket.setBroadcast(true);
+		});
+	} else {
+		console.warn("Bind without ??");
+		this.socket.bind(this.port, undefined,  function() {
+		    _this.socket.setBroadcast(true);
+		});
 	}
 
 	this.data = this.create_package(universe, 512);
@@ -103,7 +111,7 @@ ArtNet.prototype.update = function() {
 			if (_this.need_update) {
 				_this.update();
 			}
-		}, 20);
+		}, 5);
 	});
 };
 ArtNet.prototype.set = function(addr, value) {
