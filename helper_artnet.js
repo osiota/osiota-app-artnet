@@ -14,7 +14,7 @@ var ArtNet = function(config) {
 	}
 	this.refresh_rate = 4000;
 	if (typeof config.refresh === "number") {
-		this.refresh_rate = config.refresh;;
+		this.refresh_rate = config.refresh;
 	}
 
 	var universe = 0;
@@ -73,8 +73,6 @@ ArtNet.prototype.write = function() {
 			this.port, this.host, function(err) {
 		if (err) throw err;
 	});
-	console.log(this.data);
-	console.log("send", new Date());
 
 	this.t_refresh = setTimeout(function() {
 		_this.t_refresh = null;
